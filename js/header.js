@@ -5,17 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
     header.className = "site-header";
 
     header.innerHTML = `
-        <a href="/" class="logo">NANA</a>
+        <a href="/nanana/" class="logo">NANA</a>
 
         <nav class="main-nav">
 
-            <a href="/travel-books/"
+            <a href="/nanana/travel-books/"
                class="nav-link"
                data-image="travel">
                 TRAVEL BOOKS
             </a>
 
-            <a href="/contact/"
+            <a href="/nanana/contact/"
                class="nav-link"
                data-image="contact">
                 CONTACT
