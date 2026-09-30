@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact — NANA</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <main class="contact-page">
+
+        <div class="contact-content">
+
+            <div class="contact-intro">
+                <p>
+                    Have a thought, a question, or a place I should put on my map?
+                </p>
+            </div>
+
+            <form
+                class="contact-form"
+                action="https://formspree.io/f/xkjgeyvz"
+                method="POST"
+            >
+
+                <div class="message-group">
+                    <label for="message">Hi nana,</label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Leave your message here"
+                    ></textarea>
+                </div>
+
+                <div class="contact-details">
+
+                    <div class="form-group">
+                        <label for="name">From</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Your name"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Your email"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="send-row">
+                    <button type="submit">
+                        SEND ✦
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <script src="../js/header.js"></script>
+
+</body>
+</html>
