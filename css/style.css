@@ -3,477 +3,927 @@
 -------------------------------- */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    width: 100%;
-    min-height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 
 body {
-    background: #ffffff;
-    color: #111111;
-    font-family: Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #111111;
+  font-family: Helvetica, Arial, sans-serif;
 }
-
 
 /* --------------------------------
    HEADER
 -------------------------------- */
 
 .site-header {
-    width: 100%;
-    padding: 32px 40px 0;
-    text-align: center;
+  width: 100%;
+  padding: 32px 40px 0;
+  text-align: center;
 }
 
 .logo {
-    display: inline-block;
+  display: inline-block;
 
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 
-    font-size: 24px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
 }
-
 
 /* --------------------------------
    NAVIGATION
 -------------------------------- */
 
 .main-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    gap: 36px;
+  gap: 36px;
 
-    margin-top: 34px;
+  margin-top: 34px;
 }
 
 .nav-link {
-    position: relative;
+  position: relative;
 
-    color: #111111;
-    text-decoration: none;
+  color: #111111;
+  text-decoration: none;
 
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
 
-    transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
 }
 
 .nav-link:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
-
 
 /* --------------------------------
    IMAGE
 -------------------------------- */
 
 .home {
-    width: 100%;
-
-    padding: 70px 40px 80px;
+  width: 100%;
+  padding: 70px 40px 80px;
 }
 
 .image-container {
-    position: relative;
-    width: 100%;
-    max-width: none;
-    margin: 0;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+
+  overflow: hidden;
 }
 
-.home-image {
-    display: block;
-    width: 100%;
-    height: auto;
+/* Travel image */
 
-    transition: opacity 0.7s ease;
+.image-travel {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  z-index: 1;
 }
+
+/* Contact image */
 
 .image-contact {
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
 
-    width: 100%;
-    height: auto;
+  top: 0;
+  left: 0;
 
-    opacity: 0;
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  z-index: 2;
+
+  /*
+       Start completely hidden to the right.
+       The contact image wipes across the
+       travel image like a curtain.
+    */
+  clip-path: inset(0 100% 0 0);
+
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-.image-container.show-contact .image-travel {
-    opacity: 0;
-}
+/* Curtain / wipe transition */
 
 .image-container.show-contact .image-contact {
-    opacity: 1;
+  clip-path: inset(0 0 0 0);
 }
-
-
-/* --------------------------------
-   CONTACT HOVER
--------------------------------- */
-
-/*
-   The JavaScript adds .show-contact
-   when CONTACT is hovered.
-*/
-
-.image-container.show-contact .image-travel {
-    opacity: 0;
-}
-
-.image-container.show-contact .image-contact {
-    opacity: 1;
-}
-
 
 /* --------------------------------
    MOBILE
 -------------------------------- */
 
 @media (max-width: 700px) {
+  .site-header {
+    padding: 24px 20px 0;
+  }
 
-    .site-header {
-        padding: 24px 20px 0;
-    }
+  .logo {
+    font-size: 21px;
+  }
 
-    .logo {
-        font-size: 21px;
-    }
+  .main-nav {
+    gap: 24px;
+    margin-top: 28px;
+  }
 
-    .main-nav {
-        gap: 24px;
-        margin-top: 28px;
-    }
+  .nav-link {
+    font-size: 11px;
+  }
 
-    .nav-link {
-        font-size: 11px;
-    }
+  .home {
+    padding: 40px 20px 40px;
+  }
 
-    .home {
-        padding: 40px 20px 40px;
-    }
-
-    .image-container {
-        aspect-ratio: 4 / 3;
-    }
-
+  .image-container {
+    aspect-ratio: 4 / 3;
+  }
 }
 
+/* --------------------------------
+   BACK LINK
+-------------------------------- */
+
 .back-link {
-    display: inline-block;
+  display: inline-block;
 
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 
-    color: #111111;
-    text-decoration: none;
+  color: #111111;
+  text-decoration: none;
 
-    font-size: 11px;
-    letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.08em;
 
-    transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
 }
 
 .back-link:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
+/* ========================================
+   TRAVEL BOOKS
+======================================== */
+
 .travel-books {
-    width: 100%;
-    padding: 80px 40px;
+  width: 100%;
+  padding: 80px 40px;
 }
 
 .book-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .book-tile-frame {
-    width: fit-content;
-    padding: 6px;
-    border: 1px solid #78806A;
+  --frame-color: #78806a;
+
+  width: fit-content;
+
+  padding: 6px;
+
+  border: 1px solid var(--frame-color);
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
 }
 
 .book-tile {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
 }
 
 .book-tile img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.6s ease,
+    opacity 0.4s ease;
 }
 
-.book-tile:hover img {
-    opacity: 0.7;
+/* Physical book hover */
+
+.book-tile-frame:hover {
+  transform: translateY(-8px) rotate(-0.6deg);
+
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
+
+.book-tile-frame:hover .book-tile img {
+  transform: scale(1.025);
+  opacity: 0.92;
+}
+
+/* Mobile */
 
 @media (max-width: 700px) {
+  .travel-books {
+    padding: 50px 20px;
+  }
 
-    .travel-books {
-        padding: 50px 20px;
-    }
+  .book-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-    .book-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+  .book-tile-frame:hover {
+    transform: none;
+    box-shadow: none;
+  }
 
+  .book-tile-frame:hover .book-tile img {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 /* ========================================
    BOOK PAGE
-   ======================================== */
+======================================== */
 
 .flipbook-page {
-    width: 100%;
-    height: calc(100vh - 80px);
-    padding: 10px 20px 20px;
-    box-sizing: border-box;
+  width: 100%;
+  height: calc(100vh - 80px);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 10px 20px 30px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Flipbook wrapper */
+
+.flipbook-wrapper {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Flipbook */
 
 #flipbook {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 /* Individual pages */
 
 #flipbook .book-page {
-    background: #ffffff;
-    overflow: hidden;
+  background: #ffffff;
+  overflow: hidden;
 }
 
 #flipbook .book-page img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
 }
 
 /* PageFlip wrapper */
 
 .stf__parent {
-    margin: 0 auto;
+  margin: 0 auto;
+}
+
+/* --------------------------------
+   INTERACTIVE PROGRESS BAR
+-------------------------------- */
+
+.flipbook-progress {
+  position: relative;
+
+  width: min(900px, 80%);
+  height: 16px;
+
+  margin-top: 4px;
+
+  cursor: pointer;
+
+  touch-action: none;
+
+  outline: none;
+
+  /* Prevent text/image selection while dragging */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Prevent browser dragging/selecting
+   anything inside the progress bar */
+
+.flipbook-progress,
+.flipbook-progress * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+/* Invisible larger interaction area */
+
+.flipbook-progress::before {
+  content: "";
+
+  position: absolute;
+
+  top: 7px;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: #e6e6e6;
+}
+
+/* Filled progress */
+
+.flipbook-progress-bar {
+  position: absolute;
+
+  top: 7px;
+  left: 0;
+
+  width: 0%;
+  height: 2px;
+
+  background: #909090;
+
+  pointer-events: none;
+
+  transition: width 0.25s ease;
+}
+
+/* Handle */
+
+.flipbook-progress-handle {
+  position: absolute;
+
+  top: 50%;
+  right: -6px;
+
+  width: auto;
+  height: auto;
+
+  background: none;
+
+  color: #909090;
+
+  font-size: 17px;
+  line-height: 1;
+
+  transform: translateY(-50%) scale(0.8);
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+
+  pointer-events: none;
+}
+
+.flipbook-progress-handle::before {
+  content: "✦";
+}
+
+.flipbook-progress:hover .flipbook-progress-handle,
+.flipbook-progress:focus .flipbook-progress-handle {
+  transform: translateY(-50%) scale(1);
+}
+
+/* Keyboard focus */
+
+.flipbook-progress:focus-visible {
+  outline: none;
+}
+
+.flipbook-progress:focus-visible::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 1px -5px;
+
+  border: 1px solid #909090;
 }
 
 /* ========================================
-   CONTACT
-   ======================================== */
+   POSTCARD CONTACT
+======================================== */
 
-.contact-page {
-    width: 100%;
-    min-height: calc(100vh - 100px);
+.postcard-page {
+  width: 100%;
+  min-height: calc(100vh - 100px);
 
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    padding: 50px 40px 120px;
-    box-sizing: border-box;
+  padding: 60px 40px 100px;
+
+  box-sizing: border-box;
 }
 
-.contact-content {
-    width: min(900px, 100%);
+/* --------------------------------
+   POSTCARD
+-------------------------------- */
+
+.postcard {
+  position: relative;
+
+  width: min(1000px, 100%);
+
+  min-height: 560px;
+
+  padding: 38px 42px 32px;
+
+  background: #faf9f5;
+
+  border: 1px solid #222;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 8px 8px 0 rgba(120, 128, 106, 0.12);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
+/* Very subtle physical postcard feeling */
 
-/* Intro
----------------------------------------- */
+.postcard:hover {
+  transform: translateY(-2px);
 
-.contact-intro {
-    margin-bottom: 50px;
+  box-shadow: 10px 12px 0 rgba(120, 128, 106, 0.12);
 }
 
-.contact-intro p {
-    max-width: 430px;
+/* --------------------------------
+   POSTCARD HEADER
+-------------------------------- */
 
-    margin: 0;
+.postcard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    font-size: 14px;
-    line-height: 1.7;
+  padding-bottom: 18px;
 
-    color: #666;
+  border-bottom: 1px solid #222;
 }
 
-
-/* Message
----------------------------------------- */
-
-.message-group {
-    margin-bottom: 70px;
+.postcard-label,
+.postcard-number {
+  font-size: 10px;
+  letter-spacing: 0.12em;
 }
 
-.message-group label {
-    display: block;
-
-    margin-bottom: 18px;
-
-    font-size: 15px;
+.postcard-number {
+  color: #909090;
 }
 
-.message-group textarea {
-    display: block;
+/* --------------------------------
+   MESSAGE
+-------------------------------- */
 
-    width: 100%;
-    min-height: 180px;
+.postcard-message {
+  flex: 1;
 
-    padding: 0;
+  padding-top: 42px;
 
-    border: none;
-    border-bottom: 1px solid #222;
-
-    border-radius: 0;
-
-    background: transparent;
-
-    font-family: inherit;
-    font-size: 16px;
-    line-height: 1.7;
-
-    resize: vertical;
-
-    outline: none;
-
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-.message-group textarea:focus {
-    border-bottom: 1px solid #78806A;
+.postcard-message label {
+  display: block;
+
+  margin-bottom: 25px;
+
+  font-size: 13px;
+  letter-spacing: 0.08em;
 }
 
-.message-group textarea::placeholder {
-    color: #aaa;
+.postcard-message textarea {
+  width: 100%;
+
+  flex: 1;
+
+  min-height: 220px;
+
+  padding: 0;
+
+  border: none;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    rgba(34, 34, 34, 0.16) 32px
+  );
+
+  color: #111111;
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 32px;
+
+  resize: none;
+
+  outline: none;
+
+  box-sizing: border-box;
 }
 
-
-/* Name + Email
----------------------------------------- */
-
-.contact-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-
-    margin-bottom: 55px;
+.postcard-message textarea::placeholder {
+  color: #999;
 }
 
-.form-group label {
-    display: block;
-
-    margin-bottom: 14px;
-
-    font-size: 13px;
-    letter-spacing: 0.05em;
+.postcard-message textarea:focus {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    rgba(120, 128, 106, 0.45) 32px
+  );
 }
 
-.form-group input {
-    width: 100%;
+/* --------------------------------
+   BOTTOM SECTION
+-------------------------------- */
 
-    padding: 10px 0;
+.postcard-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 
-    border: none;
-    border-bottom: 1px solid #222;
+  gap: 50px;
 
-    border-radius: 0;
-
-    background: transparent;
-
-    font-family: inherit;
-    font-size: 15px;
-
-    outline: none;
-
-    box-sizing: border-box;
+  margin-top: 35px;
 }
 
-.form-group input:focus {
-    border-bottom: 1px solid #78806A;
+/* --------------------------------
+   FROM
+-------------------------------- */
+
+.postcard-from {
+  width: min(480px, 60%);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 35px;
 }
 
-.form-group input::placeholder {
-    color: #aaa;
+.postcard-field label {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 10px;
+  letter-spacing: 0.1em;
 }
 
+.postcard-field input {
+  width: 100%;
 
-/* Send
----------------------------------------- */
+  padding: 8px 0;
 
-.send-row {
-    display: flex;
-    justify-content: flex-end;
+  border: none;
+  border-bottom: 1px solid #222;
+
+  border-radius: 0;
+
+  background: transparent;
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+
+  outline: none;
+
+  box-sizing: border-box;
 }
 
-.contact-form button {
-    padding: 0;
-
-    border: none;
-    background: none;
-
-    font-family: inherit;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-
-    cursor: pointer;
-
-    transition: opacity 0.3s ease;
+.postcard-field input:focus {
+  border-bottom-color: #909090;
 }
 
-.contact-form button:hover {
-    opacity: 0.5;
+.postcard-field input::placeholder {
+  color: #aaa;
 }
 
+/* --------------------------------
+   STAMP
+-------------------------------- */
 
-/* Mobile
----------------------------------------- */
+.postcard-stamp {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* Visual stamp */
+
+.stamp {
+  width: 92px;
+  height: 108px;
+
+  border: 1px dashed #909090;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transform: rotate(1.5deg);
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.stamp-symbol {
+  font-size: 38px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stamp-symbol-sent {
+  display: none;
+}
+
+.postcard.sent .stamp-symbol-unsent {
+  display: none;
+}
+
+.postcard.sent .stamp-symbol-sent {
+  display: inline;
+}
+
+.stamp-text {
+  font-size: 11px;
+
+  letter-spacing: 0.15em;
+}
+
+.stamp-subtext {
+  margin-top: 7px;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+}
+
+/* --------------------------------
+   SEND
+-------------------------------- */
+
+.postcard-send {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 30px;
+}
+
+.postcard-send button {
+  position: relative;
+
+  padding: 0;
+
+  border: none;
+  background: none;
+
+  color: #111111;
+
+  font-family: Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.postcard-send button:hover {
+  opacity: 0.55;
+}
+
+.postcard-send button:active {
+  transform: scale(0.96);
+}
+
+.postcard-send button:disabled {
+  cursor: default;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Send text */
+
+.send-success {
+  display: none;
+}
+
+/* --------------------------------
+   STAMP ANIMATION
+-------------------------------- */
+
+.postcard.sending .stamp {
+  animation: stampPress 0.55s ease forwards;
+}
+
+@keyframes stampPress {
+  0% {
+    transform: rotate(1.5deg) scale(1);
+  }
+
+  45% {
+    transform: rotate(0deg) scale(0.92);
+  }
+
+  70% {
+    transform: rotate(0deg) scale(1.04);
+  }
+
+  100% {
+    transform: rotate(1.5deg) scale(1);
+  }
+}
+
+/* --------------------------------
+   SUCCESS STATE
+-------------------------------- */
+
+.postcard.sent .send-default {
+  display: none;
+}
+
+.postcard.sent .send-success {
+  display: inline;
+}
+
+.postcard.sent .stamp {
+  border-style: solid;
+
+  transform: rotate(-1deg);
+
+  color: #111111;
+}
+
+/* --------------------------------
+   STATUS
+-------------------------------- */
+
+.postcard-status {
+  min-height: 18px;
+
+  margin-top: 14px;
+
+  text-align: right;
+
+  font-size: 10px;
+  letter-spacing: 0.04em;
+
+  color: #909090;
+}
+
+/* --------------------------------
+   POSTCARD MOBILE
+-------------------------------- */
 
 @media (max-width: 700px) {
+  .postcard-page {
+    padding: 40px 20px 70px;
 
-    .contact-page {
-        padding: 70px 25px 90px;
-    }
+    align-items: flex-start;
+  }
 
-    .contact-intro {
-        margin-bottom: 55px;
-    }
+  .postcard {
+    min-height: 650px;
 
-    .contact-details {
-        grid-template-columns: 1fr;
+    padding: 28px 25px 25px;
 
-        gap: 35px;
-    }
+    box-shadow: 5px 5px 0 rgba(120, 128, 106, 0.12);
+  }
 
-    .message-group {
-        margin-bottom: 55px;
-    }
+  .postcard-header {
+    padding-bottom: 15px;
+  }
 
-    .send-row {
-        justify-content: flex-start;
-    }
+  .postcard-label,
+  .postcard-number {
+    font-size: 9px;
+  }
 
+  .postcard-message {
+    padding-top: 35px;
+  }
+
+  .postcard-message textarea {
+    min-height: 260px;
+
+    font-size: 14px;
+  }
+
+  .postcard-bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+    margin-top: 30px;
+  }
+
+  .postcard-from {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .postcard-stamp {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+
+  .postcard-send {
+    margin-top: 30px;
+
+    justify-content: flex-start;
+  }
+
+  .postcard-status {
+    text-align: left;
+  }
+
+  /* Flipbook progress */
+
+  .flipbook-progress {
+    width: 90%;
+    margin-top: 6px;
+  }
 }

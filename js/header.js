@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const header = document.createElement("header");
 
-    const header = document.createElement("header");
+  header.className = "site-header";
 
-    header.className = "site-header";
-
-    header.innerHTML = `
-        <a href="/nanana/" class="logo">NANA</a>
+  header.innerHTML = `
+        <a href="/nanana/" class="logo">nana</a>
 
         <nav class="main-nav">
 
@@ -24,6 +23,5 @@ document.addEventListener("DOMContentLoaded", () => {
         </nav>
     `;
 
-    document.body.prepend(header);
-
+  document.body.prepend(header);
 });

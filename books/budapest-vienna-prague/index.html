@@ -1,31 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budapest · Vienna · Prague — nana</title>
 
-    <title>Budapest · Vienna · Prague — NANA</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
 
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-
-<body>
-
+  <body>
     <main class="page flipbook-page">
-
+      <div class="flipbook-wrapper">
         <div id="flipbook">
-            <!-- flipbook goes here -->
+          <!-- flipbook goes here -->
         </div>
 
+        <div
+          class="flipbook-progress"
+          role="slider"
+          aria-label="Book progress"
+          aria-valuemin="1"
+          aria-valuemax="79"
+          aria-valuenow="1"
+          tabindex="0"
+        >
+          <div class="flipbook-progress-track"></div>
+
+          <div class="flipbook-progress-bar">
+            <div class="flipbook-progress-handle"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="../../js/header.js"></script>
+
     <!-- PageFlip library -->
     <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
 
     <!-- Your book -->
     <script src="../../js/flipbook.js"></script>
-
-</body>
+  </body>
 </html>

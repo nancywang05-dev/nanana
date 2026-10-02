@@ -1,82 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — nana</title>
 
-    <title>Contact — NANA</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
 
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+  <body>
+    <main class="postcard-page">
+      <form class="postcard" id="postcard-form">
+        <!-- --------------------------------
+                 POSTCARD HEADER
+            -------------------------------- -->
 
-<body>
+        <div class="postcard-header">
+          <span class="postcard-label"> nana · POSTCARD </span>
 
-    <main class="contact-page">
-
-        <div class="contact-content">
-
-            <div class="contact-intro">
-                <p>
-                    Have a thought, a question, or a place I should put on my map?
-                </p>
-            </div>
-
-            <form
-                class="contact-form"
-                action="https://formspree.io/f/xkjgeyvz"
-                method="POST"
-            >
-
-                <div class="message-group">
-                    <label for="message">Hi nana,</label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Leave your message here"
-                    ></textarea>
-                </div>
-
-                <div class="contact-details">
-
-                    <div class="form-group">
-                        <label for="name">From</label>
-
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Your name"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Your email"
-                        >
-                    </div>
-
-                </div>
-
-                <div class="send-row">
-                    <button type="submit">
-                        SEND ✦
-                    </button>
-                </div>
-
-            </form>
-
+          <span class="postcard-number"> ✦ 20261001 </span>
         </div>
 
+        <!-- --------------------------------
+                 MESSAGE
+            -------------------------------- -->
+
+        <div class="postcard-message">
+          <label for="message"> Hi nana, </label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="A thought, a question, or a place I should put on my map? Send me a postcard!"
+            required
+          ></textarea>
+        </div>
+
+        <!-- --------------------------------
+                 ADDRESS / SENDER
+            -------------------------------- -->
+
+        <div class="postcard-bottom">
+          <div class="postcard-from">
+            <div class="postcard-field">
+              <label for="name"> FROM </label>
+
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+              />
+            </div>
+
+            <div class="postcard-field">
+              <label for="email"> EMAIL </label>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your email"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- --------------------------------
+                     STAMP
+                -------------------------------- -->
+
+          <div class="postcard-stamp">
+            <div class="stamp">
+              <span class="stamp-symbol stamp-symbol-unsent"> </span>
+
+              <span class="stamp-symbol stamp-symbol-sent"> ✦ </span>
+
+              <span class="stamp-text"> nana </span>
+
+              <span class="stamp-subtext"> AIR MAIL </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------------
+                 SEND
+            -------------------------------- -->
+
+        <div class="postcard-send">
+          <button type="submit" id="send-postcard">
+            <span class="send-default"> MAIL THIS POSTCARD ✦ </span>
+          </button>
+        </div>
+
+        <!-- Status message -->
+
+        <p class="postcard-status" id="postcard-status" aria-live="polite"></p>
+      </form>
     </main>
 
     <script src="../js/header.js"></script>
-
-</body>
+    <script src="../js/contact.js"></script>
+  </body>
 </html>
+```

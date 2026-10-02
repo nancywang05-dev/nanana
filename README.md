@@ -1,4 +1,4 @@
-# NANA
+# nana
 
 A personal archive of travel books and things worth putting on the map.
 
@@ -12,6 +12,6 @@ This is a personal publishing space for documenting places, journeys, and storie
 
 ## Notes
 
-This repository contains the source files for the NANA website and its digital publications.
+This repository contains the source files for the nana website and its digital publications.
 
-© Nana
+© nana
