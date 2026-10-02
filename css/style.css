@@ -1,6 +1,6 @@
-/* --------------------------------
+/* ========================================
    RESET
--------------------------------- */
+======================================== */
 
 * {
   margin: 0;
@@ -20,9 +20,9 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-/* --------------------------------
+/* ========================================
    HEADER
--------------------------------- */
+======================================== */
 
 .site-header {
   width: 100%;
@@ -41,9 +41,9 @@ body {
   letter-spacing: 0.08em;
 }
 
-/* --------------------------------
+/* ========================================
    NAVIGATION
--------------------------------- */
+======================================== */
 
 .main-nav {
   display: flex;
@@ -72,9 +72,9 @@ body {
   opacity: 0.5;
 }
 
-/* --------------------------------
-   IMAGE
--------------------------------- */
+/* ========================================
+   HOMEPAGE IMAGE
+======================================== */
 
 .home {
   width: 100%;
@@ -83,8 +83,10 @@ body {
 
 .image-container {
   position: relative;
+
   width: 100%;
   max-width: none;
+
   margin: 0;
 
   overflow: hidden;
@@ -118,11 +120,6 @@ body {
 
   z-index: 2;
 
-  /*
-       Start completely hidden to the right.
-       The contact image wipes across the
-       travel image like a curtain.
-    */
   clip-path: inset(0 100% 0 0);
 
   transition: clip-path 1s cubic-bezier(0.77, 0, 0.18, 1);
@@ -134,40 +131,9 @@ body {
   clip-path: inset(0 0 0 0);
 }
 
-/* --------------------------------
-   MOBILE
--------------------------------- */
-
-@media (max-width: 700px) {
-  .site-header {
-    padding: 24px 20px 0;
-  }
-
-  .logo {
-    font-size: 21px;
-  }
-
-  .main-nav {
-    gap: 24px;
-    margin-top: 28px;
-  }
-
-  .nav-link {
-    font-size: 11px;
-  }
-
-  .home {
-    padding: 40px 20px 40px;
-  }
-
-  .image-container {
-    aspect-ratio: 4 / 3;
-  }
-}
-
-/* --------------------------------
+/* ========================================
    BACK LINK
--------------------------------- */
+======================================== */
 
 .back-link {
   display: inline-block;
@@ -255,34 +221,13 @@ body {
   opacity: 0.92;
 }
 
-/* Mobile */
-
-@media (max-width: 700px) {
-  .travel-books {
-    padding: 50px 20px;
-  }
-
-  .book-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .book-tile-frame:hover {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .book-tile-frame:hover .book-tile img {
-    transform: none;
-    opacity: 1;
-  }
-}
-
 /* ========================================
-   BOOK PAGE
+   FLIPBOOK PAGE
 ======================================== */
 
 .flipbook-page {
+  position: relative;
+
   width: 100%;
   height: calc(100vh - 80px);
 
@@ -295,28 +240,228 @@ body {
   align-items: center;
 }
 
-/* Flipbook wrapper */
+/* ========================================
+   BOOK STAGE
+======================================== */
 
-.flipbook-wrapper {
+.book-stage {
+  position: relative;
+
   width: 100%;
   height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========================================
+   RECENT NOTE
+======================================== */
+
+.recent-note {
+  position: absolute;
+
+  top: 50%;
+  right: calc(50% + 250px);
+
+  width: 190px;
+
+  transform: translateY(-50%);
+
+  z-index: 1;
+
+  color: #111111;
+}
+
+.recent-note-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+
+  color: #909090;
+}
+
+.recent-note-rule {
+  width: 100%;
+
+  margin-top: 12px;
+  margin-bottom: 22px;
+
+  border-top: 1px solid #d8d8d8;
+}
+
+.recent-note-content {
+  width: 100%;
+}
+
+.recent-note-text {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.recent-note-author {
+  margin-top: 16px;
+
+  font-size: 10px;
+
+  color: #909090;
+
+  letter-spacing: 0.04em;
+}
+
+.recent-note-empty {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.6;
+
+  color: #999999;
+}
+
+.recent-note-button {
+  margin-top: 32px;
+
+  padding: 0;
+
+  border: none;
+  background: none;
+
+  color: #111111;
+
+  font-family: Helvetica, Arial, sans-serif;
+
+  font-size: 9px;
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+
+  transition: opacity 0.25s ease;
+}
+
+.recent-note-button:hover {
+  opacity: 0.5;
+}
+
+/* ========================================
+   RECENT NOTE FORM
+======================================== */
+
+.recent-note-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.recent-note-form textarea,
+.recent-note-form input {
+  width: 100%;
+
+  padding: 6px 0;
+
+  border: none;
+  border-bottom: 1px solid #d8d8d8;
+
+  border-radius: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+
+  outline: none;
+
+  box-sizing: border-box;
+}
+
+.recent-note-form textarea {
+  min-height: 80px;
+
+  line-height: 1.5;
+
+  resize: vertical;
+}
+
+.recent-note-form textarea::placeholder,
+.recent-note-form input::placeholder {
+  color: #999999;
+}
+
+.recent-note-form textarea:focus,
+.recent-note-form input:focus {
+  border-bottom-color: #111111;
+}
+
+.recent-note-form button {
+  align-self: flex-start;
+
+  margin-top: 8px;
+
+  padding: 0;
+
+  border: none;
+  background: none;
+
+  color: #111111;
+
+  font-family: Helvetica, Arial, sans-serif;
+
+  font-size: 9px;
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+
+  transition: opacity 0.25s ease;
+}
+
+.recent-note-form button:hover {
+  opacity: 0.5;
+}
+
+.recent-note-form button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+/* ========================================
+   FLIPBOOK WRAPPER
+======================================== */
+
+.flipbook-wrapper {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 100%;
+  height: 100%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Flipbook */
+/* ========================================
+   FLIPBOOK
+======================================== */
 
 #flipbook {
   width: 100%;
   height: 100%;
 }
 
-/* Individual pages */
-
 #flipbook .book-page {
   background: #ffffff;
+
   overflow: hidden;
 }
 
@@ -329,15 +474,15 @@ body {
   object-fit: contain;
 }
 
-/* PageFlip wrapper */
+/* PageFlip generated wrapper */
 
 .stf__parent {
   margin: 0 auto;
 }
 
-/* --------------------------------
+/* ========================================
    INTERACTIVE PROGRESS BAR
--------------------------------- */
+======================================== */
 
 .flipbook-progress {
   position: relative;
@@ -353,15 +498,11 @@ body {
 
   outline: none;
 
-  /* Prevent text/image selection while dragging */
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
 }
-
-/* Prevent browser dragging/selecting
-   anything inside the progress bar */
 
 .flipbook-progress,
 .flipbook-progress * {
@@ -373,7 +514,7 @@ body {
   -webkit-user-drag: none;
 }
 
-/* Invisible larger interaction area */
+/* Track */
 
 .flipbook-progress::before {
   content: "";
@@ -407,7 +548,7 @@ body {
   transition: width 0.25s ease;
 }
 
-/* Handle */
+/* Star handle */
 
 .flipbook-progress-handle {
   position: absolute;
@@ -460,7 +601,7 @@ body {
 }
 
 /* ========================================
-   POSTCARD CONTACT
+   POSTCARD CONTACT PAGE
 ======================================== */
 
 .postcard-page {
@@ -476,22 +617,21 @@ body {
   box-sizing: border-box;
 }
 
-/* --------------------------------
+/* ========================================
    POSTCARD
--------------------------------- */
+======================================== */
 
 .postcard {
   position: relative;
 
   width: min(1000px, 100%);
-
   min-height: 560px;
 
   padding: 38px 42px 32px;
 
   background: #faf9f5;
 
-  border: 1px solid #222;
+  border: 1px solid #222222;
 
   box-sizing: border-box;
 
@@ -505,17 +645,15 @@ body {
     box-shadow 0.4s ease;
 }
 
-/* Very subtle physical postcard feeling */
-
 .postcard:hover {
   transform: translateY(-2px);
 
   box-shadow: 10px 12px 0 rgba(120, 128, 106, 0.12);
 }
 
-/* --------------------------------
+/* ========================================
    POSTCARD HEADER
--------------------------------- */
+======================================== */
 
 .postcard-header {
   display: flex;
@@ -524,7 +662,7 @@ body {
 
   padding-bottom: 18px;
 
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #222222;
 }
 
 .postcard-label,
@@ -537,9 +675,9 @@ body {
   color: #909090;
 }
 
-/* --------------------------------
-   MESSAGE
--------------------------------- */
+/* ========================================
+   POSTCARD MESSAGE
+======================================== */
 
 .postcard-message {
   flex: 1;
@@ -561,10 +699,9 @@ body {
 
 .postcard-message textarea {
   width: 100%;
+  min-height: 220px;
 
   flex: 1;
-
-  min-height: 220px;
 
   padding: 0;
 
@@ -580,6 +717,7 @@ body {
   color: #111111;
 
   font-family: Helvetica, Arial, sans-serif;
+
   font-size: 15px;
   line-height: 32px;
 
@@ -591,7 +729,7 @@ body {
 }
 
 .postcard-message textarea::placeholder {
-  color: #999;
+  color: #999999;
 }
 
 .postcard-message textarea:focus {
@@ -603,9 +741,9 @@ body {
   );
 }
 
-/* --------------------------------
-   BOTTOM SECTION
--------------------------------- */
+/* ========================================
+   POSTCARD BOTTOM
+======================================== */
 
 .postcard-bottom {
   display: flex;
@@ -617,9 +755,9 @@ body {
   margin-top: 35px;
 }
 
-/* --------------------------------
-   FROM
--------------------------------- */
+/* ========================================
+   POSTCARD FROM
+======================================== */
 
 .postcard-from {
   width: min(480px, 60%);
@@ -645,7 +783,7 @@ body {
   padding: 8px 0;
 
   border: none;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #222222;
 
   border-radius: 0;
 
@@ -664,12 +802,12 @@ body {
 }
 
 .postcard-field input::placeholder {
-  color: #aaa;
+  color: #aaaaaa;
 }
 
-/* --------------------------------
-   STAMP
--------------------------------- */
+/* ========================================
+   POSTCARD STAMP
+======================================== */
 
 .postcard-stamp {
   display: flex;
@@ -677,8 +815,6 @@ body {
   justify-content: flex-end;
   align-items: flex-end;
 }
-
-/* Visual stamp */
 
 .stamp {
   width: 92px;
@@ -703,6 +839,7 @@ body {
 .stamp-symbol {
   font-size: 38px;
   line-height: 1;
+
   margin-bottom: 10px;
 }
 
@@ -732,9 +869,9 @@ body {
   letter-spacing: 0.12em;
 }
 
-/* --------------------------------
-   SEND
--------------------------------- */
+/* ========================================
+   POSTCARD SEND
+======================================== */
 
 .postcard-send {
   display: flex;
@@ -779,15 +916,15 @@ body {
   pointer-events: none;
 }
 
-/* Send text */
+/* Send success text */
 
 .send-success {
   display: none;
 }
 
-/* --------------------------------
+/* ========================================
    STAMP ANIMATION
--------------------------------- */
+======================================== */
 
 .postcard.sending .stamp {
   animation: stampPress 0.55s ease forwards;
@@ -811,9 +948,9 @@ body {
   }
 }
 
-/* --------------------------------
-   SUCCESS STATE
--------------------------------- */
+/* ========================================
+   POSTCARD SUCCESS
+======================================== */
 
 .postcard.sent .send-default {
   display: none;
@@ -831,9 +968,9 @@ body {
   color: #111111;
 }
 
-/* --------------------------------
-   STATUS
--------------------------------- */
+/* ========================================
+   POSTCARD STATUS
+======================================== */
 
 .postcard-status {
   min-height: 18px;
@@ -848,11 +985,89 @@ body {
   color: #909090;
 }
 
-/* --------------------------------
-   POSTCARD MOBILE
--------------------------------- */
+/* ========================================
+   MOBILE
+======================================== */
 
 @media (max-width: 700px) {
+  /* Header */
+
+  .site-header {
+    padding: 24px 20px 0;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  .main-nav {
+    gap: 24px;
+
+    margin-top: 28px;
+  }
+
+  .nav-link {
+    font-size: 11px;
+  }
+
+  /* Homepage */
+
+  .home {
+    padding: 40px 20px 40px;
+  }
+
+  .image-container {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Travel books */
+
+  .travel-books {
+    padding: 50px 20px;
+  }
+
+  .book-grid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .book-tile-frame:hover {
+    transform: none;
+
+    box-shadow: none;
+  }
+
+  .book-tile-frame:hover .book-tile img {
+    transform: none;
+
+    opacity: 1;
+  }
+
+  /* Flipbook */
+
+  .flipbook-page {
+    height: calc(100vh - 70px);
+
+    padding: 10px 20px 25px;
+  }
+
+  .recent-note {
+    display: none;
+  }
+
+  .flipbook-wrapper {
+    width: calc(100vw - 40px);
+  }
+
+  .flipbook-progress {
+    width: 90%;
+
+    margin-top: 6px;
+  }
+
+  /* Postcard */
+
   .postcard-page {
     padding: 40px 20px 70px;
 
@@ -918,12 +1133,5 @@ body {
 
   .postcard-status {
     text-align: left;
-  }
-
-  /* Flipbook progress */
-
-  .flipbook-progress {
-    width: 90%;
-    margin-top: 6px;
   }
 }

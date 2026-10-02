@@ -11,24 +11,44 @@
 
   <body>
     <main class="page flipbook-page">
-      <div class="flipbook-wrapper">
-        <div id="flipbook">
-          <!-- flipbook goes here -->
-        </div>
+      <div class="book-stage">
+        <!-- RECENT NOTE -->
 
-        <div
-          class="flipbook-progress"
-          role="slider"
-          aria-label="Book progress"
-          aria-valuemin="1"
-          aria-valuemax="79"
-          aria-valuenow="1"
-          tabindex="0"
-        >
-          <div class="flipbook-progress-track"></div>
+        <aside class="recent-note" id="recent-note">
+          <div class="recent-note-label">RECENT NOTE</div>
 
-          <div class="flipbook-progress-bar">
-            <div class="flipbook-progress-handle"></div>
+          <div class="recent-note-rule"></div>
+
+          <div class="recent-note-content" id="recent-note-content">
+            <p class="recent-note-empty">Leave a little note about the book.</p>
+          </div>
+
+          <button type="button" class="recent-note-button" id="leave-note">
+            LEAVE A NOTE ✦
+          </button>
+        </aside>
+
+        <!-- BOOK -->
+
+        <div class="flipbook-wrapper">
+          <div id="flipbook">
+            <!-- flipbook goes here -->
+          </div>
+
+          <div
+            class="flipbook-progress"
+            role="slider"
+            aria-label="Book progress"
+            aria-valuemin="1"
+            aria-valuemax="79"
+            aria-valuenow="1"
+            tabindex="0"
+          >
+            <div class="flipbook-progress-track"></div>
+
+            <div class="flipbook-progress-bar">
+              <div class="flipbook-progress-handle"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -38,6 +58,10 @@
 
     <!-- PageFlip library -->
     <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+
+    <!-- Supabase library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/notes.js"></script>
 
     <!-- Your book -->
     <script src="../../js/flipbook.js"></script>
