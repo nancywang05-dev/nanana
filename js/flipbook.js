@@ -86,9 +86,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial position
   updateProgress(0);
 
-  // --------------------------------
-  // UPDATE WHEN BOOK TURNS
-  // --------------------------------
+  const recentNote = document.getElementById("recent-note");
+
+  // ========================================
+  // RECENT NOTE — START CURTAIN WHEN FLIP BEGINS
+  // ========================================
+
+  pageFlip.on("changeState", (event) => {
+    if (!recentNote) return;
+
+    const state = event.data;
+
+    if (state === "flipping") {
+      recentNote.classList.add("note-hidden");
+    }
+
+    if (state === "read") {
+      const currentPage = pageFlip.getCurrentPageIndex();
+
+      if (currentPage === 0) {
+        recentNote.classList.remove("note-hidden");
+      }
+    }
+  });
+
+  // ========================================
+  // PROGRESS
+  // ========================================
 
   pageFlip.on("flip", (event) => {
     updateProgress(event.data);
