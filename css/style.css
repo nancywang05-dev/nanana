@@ -357,7 +357,7 @@ body {
   display: grid;
 
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 50px;
 
   max-width: 1200px;
 
@@ -370,12 +370,41 @@ body {
   width: fit-content;
 
   padding: 6px;
-
+  background: #ffffff;
   border: 1px solid var(--frame-color);
 
   transition:
     transform 0.45s ease,
     box-shadow 0.45s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.book-tape {
+  position: absolute;
+
+  top: -3%;
+  left: 50%;
+
+  width: 88px;
+  height: 29px;
+
+  transform: translateX(-50%) rotate(-3deg);
+
+  background: rgba(220, 198, 143, 0.78);
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  clip-path: polygon(
+    1% 10%,
+    98% 4%,
+    100% 89%,
+    96% 96%,
+    4% 100%,
+    0 14%
+  );
 }
 
 .book-tile {
@@ -400,6 +429,23 @@ body {
     opacity 0.4s ease;
 }
 
+.book-title {
+  margin-top: 16px;
+
+  text-align: center;
+
+  color: #111111;
+
+  font-family: "Marker Felt", "Bradley Hand", cursive;
+
+  font-size: 18px;
+  font-weight: 400;
+
+  letter-spacing: 0.08em;
+
+  line-height: 1.4;
+}
+
 /* ========================================
    BOOK TILE HOVER
 ======================================== */
@@ -411,8 +457,6 @@ body {
 }
 
 .book-tile-frame:hover .book-tile img {
-  transform: scale(1.025);
-
   opacity: 0.92;
 }
 
@@ -505,7 +549,7 @@ body {
 
 .recent-note-text {
   margin: 0;
-
+  font-family: "Marker Felt", "Bradley Hand", cursive;
   font-size: 13px;
   line-height: 1.65;
   font-weight: 400;
@@ -513,7 +557,7 @@ body {
 
 .recent-note-author {
   margin-top: 16px;
-
+  font-family: "Marker Felt", "Bradley Hand", cursive;
   font-size: 10px;
   letter-spacing: 0.04em;
 
