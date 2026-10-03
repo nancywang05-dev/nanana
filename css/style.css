@@ -881,6 +881,67 @@ body {
 }
 
 /* ========================================
+   BACK TO TRAVEL BOOKS
+======================================== */
+
+.back-row {
+  position: absolute;
+
+  left: 20px;
+  bottom: -8px;
+
+  width: calc(100% - 40px);
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+.back-to-shelf {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 7px;
+
+  color: #111111;
+
+  text-decoration: none;
+
+  font-family: "Marker Felt", "Bradley Hand", cursive;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: 0.1em;
+
+  pointer-events: auto;
+
+  transition: opacity 0.25s ease;
+}
+
+.back-arrow {
+  font-size: 18px;
+  line-height: 1;
+
+  letter-spacing: 0;
+
+  transition: transform 0.25s ease;
+}
+
+.back-to-shelf:hover {
+  opacity: 0.55;
+}
+
+.back-to-shelf:hover .back-arrow {
+  transform: translateX(-4px);
+}
+
+/* ========================================
    POSTCARD CONTACT PAGE
 ======================================== */
 
@@ -1316,6 +1377,7 @@ body {
     Keep the circle transition slightly quicker
     on smaller screens.
   */
+
   .home-rectangle {
     transition-duration: 0.35s;
   }
@@ -1377,6 +1439,24 @@ body {
     width: 90%;
 
     margin-top: 6px;
+  }
+
+  /* Back to Travel Books */
+
+  .back-row {
+    left: 20px;
+    bottom: -8px;
+
+    width: calc(100% - 40px);
+    height: 22px;
+  }
+
+  .back-to-shelf {
+    font-size: 9px;
+  }
+
+  .back-arrow {
+    font-size: 17px;
   }
 
   /* Postcard */
