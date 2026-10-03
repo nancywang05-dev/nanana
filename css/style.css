@@ -224,6 +224,15 @@ body {
   top: -4%;
   right: -8%;
 
+  transform: rotate(-5deg) translateY(8px) scale(0.92);
+
+  transform-origin: center center;
+}
+
+.rectangle-5-nav .speech-bubble {
+  top: 23%;
+  right: 20%;
+
   transform: rotate(-6deg) translateY(8px) scale(0.92);
 
   transform-origin: center center;
@@ -250,8 +259,12 @@ body {
   opacity: 1;
 }
 
+.rectangle-1-nav:hover .speech-bubble {
+  transform: rotate(15deg) translateY(0) scale(1);
+}
+
 .rectangle-3-nav:hover .speech-bubble {
-  transform: rotate(-6deg) translateY(0) scale(1);
+  transform: rotate(-5deg) translateY(0) scale(1);
 }
 
 .rectangle-5-nav:hover .speech-bubble {
@@ -1389,13 +1402,13 @@ body {
   }
 
   .rectangle-3-nav .speech-bubble {
-    top: -5%;
-    right: -8%;
+    top: 0%;
+    right: 10%;
   }
 
   .rectangle-5-nav .speech-bubble {
-    bottom: 48%;
-    left: 20%;
+    top: 23%;
+    right: 20%;
   }
 
   /* Travel books */
