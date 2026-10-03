@@ -4,24 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   header.className = "site-header";
 
   header.innerHTML = `
-        <a href="/nanana/" class="logo">nana</a>
-
-        <nav class="main-nav">
-
-            <a href="/nanana/travel-books/"
-               class="nav-link"
-               data-image="travel">
-                TRAVEL BOOKS
-            </a>
-
-            <a href="/nanana/contact/"
-               class="nav-link"
-               data-image="contact">
-                CONTACT
-            </a>
-
-        </nav>
-    `;
+    <a href="/nanana/" class="logo">nana</a>
+  `;
 
   document.body.prepend(header);
 });
