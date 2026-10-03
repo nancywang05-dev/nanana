@@ -47,22 +47,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   gap: 36px;
-
   margin-top: 34px;
 }
 
 .nav-link {
   position: relative;
-
   color: #111111;
   text-decoration: none;
-
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
-
   transition: opacity 0.25s ease;
 }
 
@@ -81,12 +76,9 @@ body {
 
 .image-container {
   position: relative;
-
   width: 100%;
   max-width: none;
-
   margin: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,9 +94,6 @@ body {
   top: 50%;
   left: 50%;
 
-  /*
-    Responsive grid that scales with the window.
-  */
   width: min(72vw, 1000px);
   aspect-ratio: 2 / 1;
 
@@ -123,6 +112,12 @@ body {
 .home-rectangle {
   width: 100%;
   height: 100%;
+
+  border-radius: 0;
+
+  transition:
+    border-radius 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ========================================
@@ -135,9 +130,6 @@ body {
   top: 50%;
   left: 50%;
 
-  /*
-    Must exactly match the rectangle grid.
-  */
   width: min(72vw, 1000px);
   aspect-ratio: 2 / 1;
 
@@ -229,9 +221,6 @@ body {
 ======================================== */
 
 .rectangle-3-nav .speech-bubble {
-  /*
-    Position relative to the yellow square.
-  */
   top: -4%;
   right: -8%;
 
@@ -245,9 +234,6 @@ body {
 ======================================== */
 
 .rectangle-5-nav .speech-bubble {
-  /*
-    Position relative to the green square.
-  */
   bottom: 60%;
   left: 60%;
 
@@ -305,6 +291,26 @@ body {
 }
 
 /* ========================================
+   COLORED SQUARE → CIRCLE HOVER
+======================================== */
+
+/*
+  The transparent navigation squares sit directly
+  above the colored squares.
+
+  When the navigation square is hovered, :has()
+  lets the matching colored square change shape.
+*/
+
+.home-rectangles:has(~ .home-nav-overlay .rectangle-3-nav:hover) .rectangle-3 {
+  border-radius: 50%;
+}
+
+.home-rectangles:has(~ .home-nav-overlay .rectangle-5-nav:hover) .rectangle-5 {
+  border-radius: 50%;
+}
+
+/* ========================================
    HOME IMAGE
 ======================================== */
 
@@ -349,7 +355,6 @@ body {
 
 .travel-books {
   width: 100%;
-
   padding: 80px 40px;
 }
 
@@ -370,13 +375,17 @@ body {
   width: fit-content;
 
   padding: 6px;
+
   background: #ffffff;
+
   border: 1px solid var(--frame-color);
 
   transition:
     transform 0.45s ease,
     box-shadow 0.45s ease;
+
   position: relative;
+
   overflow: visible;
 }
 
@@ -542,7 +551,9 @@ body {
 
 .recent-note-text {
   margin: 0;
+
   font-family: "Marker Felt", "Bradley Hand", cursive;
+
   font-size: 13px;
   line-height: 1.65;
   font-weight: 400;
@@ -550,7 +561,9 @@ body {
 
 .recent-note-author {
   margin-top: 16px;
+
   font-family: "Marker Felt", "Bradley Hand", cursive;
+
   font-size: 10px;
   letter-spacing: 0.04em;
 
@@ -723,7 +736,6 @@ body {
 
 #flipbook .book-page {
   background: #ffffff;
-
   overflow: hidden;
 }
 
@@ -1126,7 +1138,6 @@ body {
 
 .stamp-text {
   font-size: 11px;
-
   letter-spacing: 0.15em;
 }
 
@@ -1275,7 +1286,6 @@ body {
 
   .main-nav {
     gap: 24px;
-
     margin-top: 28px;
   }
 
@@ -1303,8 +1313,15 @@ body {
   }
 
   /*
-    Handwritten text on mobile.
+    Keep the circle transition slightly quicker
+    on smaller screens.
   */
+  .home-rectangle {
+    transition-duration: 0.35s;
+  }
+
+  /* Handwritten text on mobile */
+
   .speech-bubble {
     font-size: 24px;
   }
@@ -1327,19 +1344,16 @@ body {
 
   .book-grid {
     grid-template-columns: 1fr;
-
     gap: 20px;
   }
 
   .book-tile-frame:hover {
     transform: none;
-
     box-shadow: none;
   }
 
   .book-tile-frame:hover .book-tile img {
     transform: none;
-
     opacity: 1;
   }
 
