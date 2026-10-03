@@ -397,14 +397,7 @@ body {
 
   pointer-events: none;
 
-  clip-path: polygon(
-    1% 10%,
-    98% 4%,
-    100% 89%,
-    96% 96%,
-    4% 100%,
-    0 14%
-  );
+  clip-path: polygon(1% 10%, 98% 4%, 100% 89%, 96% 96%, 4% 100%, 0 14%);
 }
 
 .book-tile {
