@@ -92,21 +92,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // RECENT NOTE — START CURTAIN WHEN FLIP BEGINS
   // ========================================
 
+  function updateRecentNote(pageIndex) {
+    if (!recentNote) return;
+
+    if (pageIndex === 0) {
+      recentNote.classList.remove("note-hidden");
+    } else {
+      recentNote.classList.add("note-hidden");
+    }
+  }
+
+  // Hide immediately when leaving page 1
   pageFlip.on("changeState", (event) => {
     if (!recentNote) return;
 
-    const state = event.data;
-
-    if (state === "flipping") {
+    if (event.data === "flipping") {
       recentNote.classList.add("note-hidden");
     }
+  });
 
-    if (state === "read") {
-      const currentPage = pageFlip.getCurrentPageIndex();
+  // Show again when returning to page 1
+  pageFlip.on("flip", (event) => {
+    const pageIndex = event.data;
 
-      if (currentPage === 0) {
-        recentNote.classList.remove("note-hidden");
-      }
+    updateProgress(pageIndex);
+
+    if (pageIndex === 0) {
+      recentNote.classList.remove("note-hidden");
     }
   });
 
@@ -129,11 +141,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let position = (clientX - rect.left) / rect.width;
 
-    // Keep position between 0 and 1
     position = Math.max(0, Math.min(1, position));
 
-    // Convert position to page number
     const pageIndex = Math.round(position * (totalPages - 1));
+
+    // Hide immediately when leaving page 1
+    if (pageIndex !== 0 && recentNote) {
+      recentNote.classList.add("note-hidden");
+    }
 
     pageFlip.turnToPage(pageIndex);
   }
