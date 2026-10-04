@@ -34,7 +34,7 @@ body {
   display: inline-block;
   color: inherit;
   text-decoration: none;
-  font-family: "Marker Felt", "Bradley Hand", cursive;
+  font-family: "Marker Felt", "Permanent Marker", cursive;
   font-size: 36px;
   letter-spacing: 0.1em;
 }
@@ -195,7 +195,7 @@ body {
 
   color: #111111;
 
-  font-family: "Marker Felt", "Bradley Hand", cursive;
+  font-family: "Marker Felt", "Permanent Marker", cursive;
 
   font-size: clamp(25px, 2.5vw, 38px);
   font-weight: 400;
@@ -451,7 +451,7 @@ body {
 
   color: #111111;
 
-  font-family: "Marker Felt", "Bradley Hand", cursive;
+  font-family: "Marker Felt", "Permanent Marker", cursive;
 
   font-size: 18px;
   font-weight: 400;
@@ -565,7 +565,7 @@ body {
 .recent-note-text {
   margin: 0;
 
-  font-family: "Marker Felt", "Bradley Hand", cursive;
+  font-family: "Marker Felt", "Permanent Marker", cursive;
 
   font-size: 13px;
   line-height: 1.65;
@@ -575,7 +575,7 @@ body {
 .recent-note-author {
   margin-top: 16px;
 
-  font-family: "Marker Felt", "Bradley Hand", cursive;
+  font-family: "Marker Felt", "Permanent Marker", cursive;
 
   font-size: 10px;
   letter-spacing: 0.04em;
@@ -766,6 +766,52 @@ body {
 }
 
 /* ========================================
+   FLIPBOOK HINT
+   ======================================== */
+
+.flipbook-hint {
+  position: absolute;
+
+  top: 50%;
+  left: calc(95%);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  transform: translateY(-50%) rotate(-3deg);
+
+  color: #111111;
+
+  font-family: "Marker Felt", "Permanent Marker", cursive;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+
+  pointer-events: none;
+
+  z-index: 4;
+}
+
+.flipbook-hint-arrow {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  line-height: 1;
+
+  animation: flipHint 1.8s ease-in-out infinite;
+}
+
+@keyframes flipHint {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+/* ========================================
    INTERACTIVE PROGRESS BAR
 ======================================== */
 
@@ -925,9 +971,9 @@ body {
 
   text-decoration: none;
 
-  font-family: "Marker Felt", "Bradley Hand", cursive;
+  font-family: "Marker Felt", "Permanent Marker", cursive;
 
-  font-size: 10px;
+  font-size: 18px;
   font-weight: 400;
 
   letter-spacing: 0.1em;
