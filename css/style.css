@@ -217,7 +217,7 @@ body {
 }
 
 /* ========================================
-   TRAVEL BOOKS TEXT
+   HOME PAGE TEXT
 ======================================== */
 
 .rectangle-3-nav .speech-bubble {
@@ -228,19 +228,6 @@ body {
 
   transform-origin: center center;
 }
-
-.rectangle-5-nav .speech-bubble {
-  top: 23%;
-  right: 20%;
-
-  transform: rotate(-6deg) translateY(8px) scale(0.92);
-
-  transform-origin: center center;
-}
-
-/* ========================================
-   CONTACT TEXT
-======================================== */
 
 .rectangle-5-nav .speech-bubble {
   bottom: 60%;
@@ -781,7 +768,7 @@ body {
 
   transform: translateY(-50%) rotate(-3deg);
 
-  color: #111111;
+  color: #909090;
 
   font-family: "Marker Felt", "Permanent Marker", cursive;
   font-size: 14px;
@@ -1448,12 +1435,12 @@ body {
   }
 
   .rectangle-3-nav .speech-bubble {
-    top: 0%;
-    right: 10%;
+    top: 15%;
+    right: 8%;
   }
 
   .rectangle-5-nav .speech-bubble {
-    top: 23%;
+    top: 30%;
     right: 20%;
   }
 
