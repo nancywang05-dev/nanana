@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Calendar — nana</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="calendar-page">
+    <main class="calendar-main">
+      <section aria-label="Monthly calendar">
+        <div class="month-row">
+          <button class="month-btn" id="prev-month" aria-label="Previous month">
+            ‹
+          </button>
+          <h2 id="month-label"></h2>
+          <button class="month-btn" id="next-month" aria-label="Next month">
+            ›
+          </button>
+        </div>
+
+        <div class="calendar-wrap">
+          <div class="calendar">
+            <div class="weekdays" aria-hidden="true">
+              <div class="weekday">SUN</div>
+              <div class="weekday">MON</div>
+              <div class="weekday">TUE</div>
+              <div class="weekday">WED</div>
+              <div class="weekday">THU</div>
+              <div class="weekday">FRI</div>
+              <div class="weekday">SAT</div>
+            </div>
+
+            <div class="days" id="calendar-days"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      class="memory-overlay"
+      id="memory-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="memory-title"
+      aria-hidden="true"
+    >
+      <section class="memory-panel">
+        <button
+          class="close-memory"
+          id="close-memory"
+          aria-label="Close memory"
+        >
+          ×
+        </button>
+        <p class="memory-date" id="memory-date"></p>
+        <h2 class="memory-title" id="memory-title"></h2>
+        <p class="memory-text" id="memory-text"></p>
+        <div class="photo-deck" id="photo-deck"></div>
+      </section>
+    </div>
+
+    <script>
+      /*
+      Add or edit memories here.
+      Dates use YYYY-MM-DD.
+      Use photo paths relative to the website root, e.g.
+      /nanana/images/memories/coffee.jpg
+    */
+
+      const memories = [
+        {
+          id: "photo-wall",
+          start: "2026-10-09",
+          end: "2026-10-09",
+          symbolImage: "../images/memories/20261009.png",
+          title: "wall of fame?",
+          text: "Today I gathered my photos and taped them all to the wall, capturing the plot so far.",
+          photos: [
+            {
+              src: "../images/memories/20261009-photowall.jpg",
+              caption: "my photo wall",
+            },
+          ],
+        },
+      ];
+
+      const daysEl = document.getElementById("calendar-days");
+      const monthLabel = document.getElementById("month-label");
+      const overlay = document.getElementById("memory-overlay");
+      const deck = document.getElementById("photo-deck");
+
+      const today = new Date();
+      let displayedMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+
+      let lastFocused = null;
+
+      const pad = (n) => String(n).padStart(2, "0");
+
+      const dateKey = (d) =>
+        `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
+      const formatDate = (iso) =>
+        new Date(iso + "T12:00:00").toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        });
+
+      const dateInRange = (iso, start, end) => iso >= start && iso <= end;
+
+      function renderCalendar() {
+        const year = displayedMonth.getFullYear();
+        const month = displayedMonth.getMonth();
+
+        monthLabel.textContent = displayedMonth.toLocaleDateString("en-US", {
+          month: "long",
+          year: "numeric",
+        });
+
+        daysEl.innerHTML = "";
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const count = new Date(year, month + 1, 0).getDate();
+        const totalCells = Math.ceil((firstDay + count) / 7) * 7;
+
+        for (let cell = 0; cell < totalCells; cell++) {
+          const dayNum = cell - firstDay + 1;
+
+          const cellDate =
+            dayNum > 0 && dayNum <= count
+              ? new Date(year, month, dayNum)
+              : null;
+
+          const cellEl = document.createElement("div");
+          cellEl.className = "day";
+
+          if (!cellDate) {
+            cellEl.classList.add("empty");
+            cellEl.setAttribute("aria-hidden", "true");
+            daysEl.appendChild(cellEl);
+            continue;
+          }
+
+          const iso = dateKey(cellDate);
+          const memory = memories.find((m) => dateInRange(iso, m.start, m.end));
+
+          const number = document.createElement("span");
+          number.className = "day-number";
+          number.textContent = dayNum;
+          cellEl.appendChild(number);
+
+          if (memory) {
+            cellEl.classList.add("has-memory");
+            cellEl.tabIndex = 0;
+            cellEl.setAttribute("role", "button");
+
+            const rangeText =
+              memory.end > memory.start ? ` to ${formatDate(memory.end)}` : "";
+
+            cellEl.setAttribute(
+              "aria-label",
+              `${formatDate(memory.start)}${rangeText}: ${memory.title}`,
+            );
+
+            const doodle = document.createElement("span");
+            doodle.className = "doodle";
+
+            const art = document.createElement("span");
+            art.className = "doodle-art";
+
+            if (memory.symbolImage) {
+              const img = document.createElement("img");
+              img.src = memory.symbolImage;
+              img.alt = "";
+              img.className = "calendar-symbol-image";
+              art.appendChild(img);
+            } else {
+              art.textContent = memory.symbol || "✦";
+            }
+
+            doodle.appendChild(art);
+
+            if (memory.label) {
+              const label = document.createElement("span");
+              label.className = "doodle-label";
+              label.textContent = memory.label;
+              doodle.appendChild(label);
+            }
+
+            cellEl.appendChild(doodle);
+
+            cellEl.addEventListener("click", () => openMemory(memory));
+
+            cellEl.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openMemory(memory);
+              }
+            });
+          }
+
+          daysEl.appendChild(cellEl);
+        }
+      }
+
+      function openMemory(memory) {
+        lastFocused = document.activeElement;
+
+        document.getElementById("memory-date").textContent =
+          memory.end > memory.start
+            ? `${formatDate(memory.start)} — ${formatDate(memory.end)}`
+            : formatDate(memory.start);
+
+        document.getElementById("memory-title").textContent =
+          memory.title || "A little moment";
+
+        const text = document.getElementById("memory-text");
+        text.textContent = memory.text || "";
+        text.style.display = memory.text ? "block" : "none";
+
+        deck.innerHTML = "";
+
+        (memory.photos || []).forEach((photo, i) => {
+          const card = document.createElement("button");
+          card.type = "button";
+          card.className = "photo-card" + (i === 0 ? " selected" : "");
+          card.setAttribute("aria-label", photo.caption || `Photo ${i + 1}`);
+
+          const art = document.createElement("span");
+          art.className = "photo-art";
+
+          if (photo.src) {
+            const img = document.createElement("img");
+            img.src = photo.src;
+            img.alt = photo.caption || "";
+            art.appendChild(img);
+          } else {
+            const symbol = document.createElement("span");
+            symbol.textContent = photo.symbol || "✧";
+            art.appendChild(symbol);
+          }
+
+          const caption = document.createElement("span");
+          caption.className = "photo-caption";
+          caption.textContent = photo.caption || "";
+
+          card.append(art, caption);
+
+          card.addEventListener("click", () => {
+            deck
+              .querySelectorAll(".photo-card")
+              .forEach((c) => c.classList.remove("selected"));
+            card.classList.add("selected");
+          });
+
+          deck.appendChild(card);
+        });
+
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.getElementById("close-memory").focus();
+      }
+
+      function closeMemory() {
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+
+        if (lastFocused && lastFocused.focus) {
+          lastFocused.focus();
+        }
+      }
+
+      document
+        .getElementById("close-memory")
+        .addEventListener("click", closeMemory);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeMemory();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.classList.contains("open")) {
+          closeMemory();
+        }
+      });
+
+      document.getElementById("prev-month").addEventListener("click", () => {
+        displayedMonth = new Date(
+          displayedMonth.getFullYear(),
+          displayedMonth.getMonth() - 1,
+          1,
+        );
+        renderCalendar();
+      });
+
+      document.getElementById("next-month").addEventListener("click", () => {
+        displayedMonth = new Date(
+          displayedMonth.getFullYear(),
+          displayedMonth.getMonth() + 1,
+          1,
+        );
+        renderCalendar();
+      });
+      renderCalendar();
+    </script>
+
+    <script src="../js/header.js"></script>
+  </body>
+</html>

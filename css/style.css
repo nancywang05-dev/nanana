@@ -170,6 +170,11 @@ body {
    HOMEPAGE NAVIGATION POSITIONS
 ======================================== */
 
+.rectangle-2-nav {
+  grid-column: 2;
+  grid-row: 1;
+}
+
 .rectangle-3-nav {
   grid-column: 3;
   grid-row: 1;
@@ -220,6 +225,15 @@ body {
    HOME PAGE TEXT
 ======================================== */
 
+.rectangle-2-nav .speech-bubble {
+  top: 10%;
+  right: 65%;
+
+  transform: rotate(-30deg) translateY(8px) scale(0.92);
+
+  transform-origin: center center;
+}
+
 .rectangle-3-nav .speech-bubble {
   top: -4%;
   right: -8%;
@@ -246,8 +260,8 @@ body {
   opacity: 1;
 }
 
-.rectangle-1-nav:hover .speech-bubble {
-  transform: rotate(15deg) translateY(0) scale(1);
+.rectangle-2-nav:hover .speech-bubble {
+  transform: rotate(-30deg) translateY(0) scale(1);
 }
 
 .rectangle-3-nav:hover .speech-bubble {
@@ -269,7 +283,6 @@ body {
 
 .rectangle-2 {
   background: #a8c4d4;
-  opacity: 0;
 }
 
 .rectangle-3 {
@@ -294,13 +307,9 @@ body {
    COLORED SQUARE → CIRCLE HOVER
 ======================================== */
 
-/*
-  The transparent navigation squares sit directly
-  above the colored squares.
-
-  When the navigation square is hovered, :has()
-  lets the matching colored square change shape.
-*/
+.home-rectangles:has(~ .home-nav-overlay .rectangle-2-nav:hover) .rectangle-2 {
+  border-radius: 50%;
+}
 
 .home-rectangles:has(~ .home-nav-overlay .rectangle-3-nav:hover) .rectangle-3 {
   border-radius: 50%;
@@ -1377,6 +1386,457 @@ body {
 }
 
 /* ========================================
+   CALENDAR
+======================================== */
+
+.calendar-page {
+  --calendar-paper: #f7f5ef;
+  --calendar-ink: #111111;
+  --calendar-sage: #909090;
+  --calendar-sage-light: #a8c4d4;
+  --calendar-line: #909090;
+  --calendar-serif: "Marker Felt", "Permanent Marker", serif;
+  --calendar-sans: "Marker Felt", "Permanent Marker", sans-serif;
+  --calendar-hand: "Marker Felt", "Permanent Marker", cursive;
+
+  margin: 0;
+  min-height: 100vh;
+  color: var(--calendar-ink);
+  background: var(--calendar-paper);
+  font-family: var(--calendar-sans);
+}
+
+.calendar-page *,
+.calendar-page *::before,
+.calendar-page *::after {
+  box-sizing: border-box;
+}
+
+.calendar-page button {
+  font: inherit;
+}
+
+/* ----------------------------------------
+   PAGE INTRODUCTION
+---------------------------------------- */
+
+.calendar-main {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  padding: 8px 0 42px;
+}
+
+.calendar-page .calendar-intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.calendar-page .calendar-intro h1 {
+  margin: 0;
+  color: var(--calendar-sage);
+  font-family: var(--calendar-hand);
+  font-size: clamp(43px, 6vw, 68px);
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  transform: rotate(-2deg);
+}
+
+.calendar-page .title-swoosh {
+  width: 82px;
+  height: 2px;
+  background: var(--calendar-sage);
+  margin: 12px auto 23px;
+  transform: rotate(-5deg);
+}
+
+/* ----------------------------------------
+   MONTH NAVIGATION
+---------------------------------------- */
+
+.calendar-page .month-row {
+  width: min(760px, 100%);
+  margin: 0 auto 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.calendar-page #month-label {
+  min-width: 210px;
+  text-align: center;
+  margin: 0;
+  color: #1f6486;
+  font-family: "Marker Felt", "Permanent Marker", cursive;
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.calendar-page .month-btn {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--calendar-ink);
+  cursor: pointer;
+  font-size: 27px;
+  line-height: 1;
+  border-radius: 50%;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.calendar-page .month-btn:hover {
+  background: var(--calendar-sage-light);
+  transform: scale(1.04);
+}
+
+.calendar-page .month-btn:focus-visible,
+.calendar-page .close-memory:focus-visible {
+  outline: 2px dashed var(--calendar-sage);
+  outline-offset: 4px;
+}
+
+/* ----------------------------------------
+   CALENDAR GRID
+---------------------------------------- */
+
+.calendar-page .calendar-wrap {
+  position: relative;
+  width: min(900px, 100%);
+  margin: 0 auto;
+}
+
+.calendar-page .calendar {
+  border: 1.5px solid #384247;
+  border-radius: 2px;
+  transform: rotate(-0.12deg);
+  box-shadow: 0 1px 0 rgba(30, 30, 20, 0.03);
+}
+
+.calendar-page .weekdays,
+.calendar-page .days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.calendar-page .weekdays {
+  border-bottom: 1px solid var(--calendar-line);
+}
+
+.calendar-page .weekday {
+  min-width: 0;
+  min-height: 48px;
+  display: grid;
+  place-items: center;
+  font-family: var(--calendar-serif);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.calendar-page .day {
+  position: relative;
+  min-width: 0;
+  min-height: 112px;
+  padding: 10px 10px 7px;
+  border-right: 1px solid var(--calendar-line);
+  border-bottom: 1px solid var(--calendar-line);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.calendar-page .day:nth-child(7n) {
+  border-right: 0;
+}
+
+.calendar-page .day.empty {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.calendar-page .day-number {
+  position: relative;
+  z-index: 2;
+  font-family: var(--calendar-hand);
+  font-size: 18px;
+}
+
+.calendar-page .day.has-memory {
+  cursor: pointer;
+}
+
+.calendar-page .day.has-memory:focus-visible {
+  outline: 2px dashed var(--calendar-sage);
+  outline-offset: -4px;
+}
+
+.calendar-page .day.has-memory:hover {
+  background: #a8c4d4;
+}
+
+/* ----------------------------------------
+   MEMORY DOODLES
+---------------------------------------- */
+
+.calendar-page .doodle {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  transform: translate(-50%, -35%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 94%;
+  z-index: 1;
+  color: #606a53;
+  pointer-events: none;
+}
+
+.calendar-page .doodle-art {
+  font-size: 32px;
+  line-height: 1.15;
+  filter: saturate(0.72);
+}
+
+.calendar-page .doodle-label {
+  max-width: 112px;
+  color: #4d5047;
+  font-family: var(--calendar-hand);
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* ----------------------------------------
+   DECORATIVE DETAILS
+---------------------------------------- */
+
+.calendar-page .decor {
+  position: absolute;
+  pointer-events: none;
+  color: var(--calendar-sage);
+  opacity: 0.85;
+}
+
+.calendar-page .decor-left {
+  left: -48px;
+  top: -28px;
+  font-size: 32px;
+}
+
+.calendar-page .decor-right {
+  right: -40px;
+  bottom: -22px;
+  font-size: 30px;
+}
+
+/* ----------------------------------------
+   MEMORY POP-UP OVERLAY
+---------------------------------------- */
+
+.calendar-page .memory-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  place-items: center;
+  padding: 24px;
+  background: rgba(42, 43, 36, 0.28);
+  backdrop-filter: blur(3px);
+}
+
+.calendar-page .memory-overlay.open {
+  display: grid;
+}
+
+.calendar-page .memory-panel {
+  position: relative;
+  width: min(850px, 96vw);
+  max-height: 88vh;
+  overflow: auto;
+  padding: 34px clamp(22px, 4vw, 48px) 30px;
+  background: #fbfaf6;
+  border: 1px solid #d0c8c2;
+  box-shadow: 0 18px 55px rgba(39, 40, 31, 0.2);
+  border-radius: 3px;
+  animation: calendar-appear 0.22s ease-out;
+}
+
+@keyframes calendar-appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px) rotate(-0.5deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.calendar-page .close-memory {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: #1f6486;
+  cursor: pointer;
+  font-family: var(--calendar-hand);
+  font-size: 32px;
+  padding: 3px 8px;
+}
+
+.calendar-page .memory-date {
+  text-align: center;
+  margin: 0 0 7px;
+  color: #1f6486;
+  font-family: var(--calendar-serif);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.calendar-page .memory-title {
+  text-align: center;
+  margin: 0;
+  color: #1f6486;
+  font-family: var(--calendar-hand);
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.calendar-page .memory-text {
+  max-width: 570px;
+  margin: 12px auto 22px;
+  text-align: center;
+  color: #909090;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ----------------------------------------
+   MEMORY PHOTO CARDS — TWO-SIDED STACK
+---------------------------------------- */
+
+.calendar-page .photo-deck {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 430px;
+  padding: 25px 10px 35px;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+  gap: 0;
+}
+
+.calendar-page .photo-card {
+  position: absolute;
+  width: clamp(220px, 35vw, 330px);
+  padding: 10px 10px 15px;
+  background: white;
+  border: 1px solid #e3e0d6;
+  box-shadow: 0 8px 22px rgba(50, 48, 40, 0.16);
+  cursor: pointer;
+  text-align: center;
+  transform-origin: center center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Previous photos — show more on the LEFT */
+.calendar-page .photo-card.previous-photo {
+  z-index: 5;
+  transform: translateX(-155px) rotate(-8deg) scale(0.92);
+}
+
+/* Next photos — show more on the RIGHT */
+.calendar-page .photo-card.next-photo {
+  z-index: 6;
+  transform: translateX(155px) rotate(8deg) scale(0.92);
+}
+
+/* Current photo stays centered and in front */
+.calendar-page .photo-card.selected {
+  z-index: 10;
+  transform: translateX(-20px) rotate(-1deg) scale(1);
+  box-shadow: 0 12px 28px rgba(50, 48, 40, 0.2);
+}
+
+.calendar-page .photo-card:focus-visible {
+  outline: 2px dashed var(--calendar-sage);
+  outline-offset: 4px;
+}
+
+.calendar-page .photo-art {
+  aspect-ratio: 5 / 5;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: linear-gradient(145deg, #e5e7dc, #f0e4d5 58%, #d7ded9);
+  color: #68745c;
+  font-size: 35px;
+}
+
+.calendar-page .photo-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.calendar-page .photo-caption {
+  display: block;
+  padding-top: 10px;
+  color: #595b52;
+  font-family: var(--calendar-hand);
+  font-size: 20px;
+  font-style: italic;
+}
+
+.calendar-page .memory-hint {
+  text-align: center;
+  margin: 4px 0 0;
+  color: #8a887c;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+.calendar-page .day:has(.calendar-symbol-image) {
+  overflow: visible;
+  isolation: auto;
+  z-index: 5;
+}
+
+.calendar-page .calendar-symbol-image {
+  display: block;
+  width: 250%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  margin: 0;
+  position: relative;
+  left: -80%;
+  top: -20px;
+  z-index: 10;
+}
+
+.calendar-page .doodle,
+.calendar-page .doodle-art {
+  overflow: visible;
+}
+
+/* ========================================
    MOBILE
 ======================================== */
 
@@ -1432,6 +1892,11 @@ body {
 
   .speech-bubble {
     font-size: 24px;
+  }
+
+  .rectangle-2-nav .speech-bubble {
+    top: 15%;
+    right: 8%;
   }
 
   .rectangle-3-nav .speech-bubble {
@@ -1572,5 +2037,142 @@ body {
 
   .postcard-status {
     text-align: left;
+  }
+
+  .calendar-page .month-row {
+    gap: 5px;
+  }
+
+  .calendar-page #month-label {
+    min-width: 0;
+    flex: 1;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+  }
+
+  .calendar-page .month-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .calendar-page .weekday {
+    font-size: 8px;
+  }
+
+  .calendar-page .day {
+    min-height: 65px;
+    padding: 5px 3px;
+  }
+
+  .calendar-page .doodle-art {
+    font-size: 19px;
+  }
+
+  .calendar-page .doodle-label {
+    display: none;
+  }
+
+  .calendar-main {
+    width: 94vw;
+    padding-top: 42px;
+  }
+
+  .calendar-page .calendar-intro {
+    margin-bottom: 35px;
+  }
+
+  .calendar-page .month-row {
+    margin-bottom: 15px;
+    gap: 12px;
+  }
+
+  .calendar-page #month-label {
+    min-width: 180px;
+    font-size: 18px;
+  }
+
+  .calendar-page .day {
+    min-height: 82px;
+    padding: 7px 5px;
+  }
+
+  .calendar-page .weekday {
+    min-height: 38px;
+    font-size: 9px;
+    letter-spacing: 0.03em;
+  }
+
+  .calendar-page .day-number {
+    font-size: 16px;
+  }
+
+  .calendar-page .doodle-art {
+    font-size: 24px;
+  }
+
+  .calendar-page .doodle-label {
+    font-size: 12px;
+  }
+
+  .calendar-page .decor-left {
+    left: -4px;
+    top: -27px;
+    font-size: 22px;
+  }
+
+  .calendar-page .decor-right {
+    right: 0;
+    bottom: -34px;
+    font-size: 22px;
+  }
+
+  .calendar-page .memory-overlay {
+    padding: 10px;
+  }
+
+  .calendar-page .memory-panel {
+    padding: 34px 16px 22px;
+    max-height: 92vh;
+  }
+
+  .calendar-page .memory-title {
+    font-size: 29px;
+  }
+
+  .calendar-page .photo-deck {
+    min-height: 340px;
+    padding: 18px 0 25px;
+  }
+
+  .calendar-page .photo-card {
+    width: min(62vw, 250px);
+    padding: 8px 8px 12px;
+  }
+
+  .calendar-page .photo-card.previous-photo {
+    transform: translateX(-65px) rotate(-7deg) scale(0.92);
+  }
+
+  .calendar-page .photo-card.next-photo {
+    transform: translateX(65px) rotate(7deg) scale(0.92);
+  }
+
+  .calendar-page .photo-card.selected {
+    transform: translateY(-3px) rotate(-1deg) scale(1);
+  }
+
+  .calendar-page .photo-caption {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calendar-page *,
+  .calendar-page *::before,
+  .calendar-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
