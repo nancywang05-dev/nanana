@@ -1721,6 +1721,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.7;
+  white-space: pre-line;
 }
 
 /* ----------------------------------------
@@ -1732,44 +1733,48 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 430px;
-  padding: 25px 10px 35px;
+  min-height: 460px;
+  padding: 30px 10px;
   margin: 0 auto;
-  flex-wrap: nowrap;
-  gap: 0;
+  overflow: visible;
 }
 
 .calendar-page .photo-card {
   position: absolute;
-  width: clamp(220px, 35vw, 330px);
+  left: 50%;
+  top: 50%;
+  width: clamp(220px, 32vw, 310px);
+  box-sizing: border-box;
   padding: 10px 10px 15px;
   background: white;
   border: 1px solid #e3e0d6;
   box-shadow: 0 8px 22px rgba(50, 48, 40, 0.16);
   text-align: center;
   transform-origin: center center;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
 }
 
-/* Previous photos — show more on the LEFT */
+.calendar-page .photo-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .calendar-page .photo-card.previous-photo {
   z-index: 5;
-  transform: translateX(-155px) rotate(-8deg) scale(0.92);
+  opacity: 1;
+  transform: translate(calc(-50% - 145px), -50%) rotate(-8deg) scale(0.88);
 }
 
-/* Next photos — show more on the RIGHT */
 .calendar-page .photo-card.next-photo {
-  z-index: 6;
-  transform: translateX(155px) rotate(8deg) scale(0.92);
+  z-index: 5;
+  opacity: 1;
+  transform: translate(calc(-50% + 145px), -50%) rotate(8deg) scale(0.88);
 }
 
-/* Current photo stays centered and in front */
 .calendar-page .photo-card.selected {
   z-index: 10;
-  transform: translateX(-20px) rotate(-1deg) scale(1);
-  box-shadow: 0 12px 28px rgba(50, 48, 40, 0.2);
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
 }
 
 .calendar-page .photo-card:focus-visible {
