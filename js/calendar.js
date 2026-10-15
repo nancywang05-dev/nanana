@@ -35,6 +35,20 @@ const memories = [
       },
     ],
   },
+  {
+    id: "flowers",
+    start: "2026-10-15",
+    end: "2026-10-15",
+    symbolImage: "../images/memories/20261014.png",
+    title: "special day",
+    text: "Happy Birthday to GC",
+    photos: [
+      {
+        src: "../images/memories/20261014-flowers.JPG",
+        caption: "the bouquet",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
