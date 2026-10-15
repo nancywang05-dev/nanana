@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   header.className = "site-header";
 
   header.innerHTML = `
-    <a href="/nanana/" class="logo">nana</a>
+    <a href="/nanana/" class="logo">nanana</a>
   `;
 
   document.body.prepend(header);

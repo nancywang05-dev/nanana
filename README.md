@@ -1,4 +1,4 @@
-# nana
+# nanana
 
 A personal archive of things worth sharing with you.
 
@@ -13,7 +13,7 @@ The website brings these pieces together as a small, evolving personal archive.
 
 ## Notes
 
-This repository contains the source files for the nana website, its digital publications, and related creative work.
+This repository contains the source files for the nanana website, its digital publications, and related creative work.
 The site is designed and maintained independently, with the intention of keeping both the archive and its presentation personal, simple, and evolving.
 
 © nana
