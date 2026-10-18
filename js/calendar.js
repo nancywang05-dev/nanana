@@ -49,6 +49,28 @@ const memories = [
       },
     ],
   },
+  {
+    id: "frinedsday",
+    start: "2026-10-17",
+    end: "2026-10-17",
+    symbolImage: "../images/memories/20261017.png",
+    title: "a random happy day",
+    text: "Today's itinerary: catch Dittos, eat something delicious, get distracted by Kiko. \nWhat a solid use of a day!",
+    photos: [
+      {
+        src: "../images/memories/20261017-ditto.jpg",
+        caption: "ditto mass outbreaks?",
+      },
+      {
+        src: "../images/memories/20261017-heytea.jpg",
+        caption: "mango coconut sticky rice: so good!",
+      },
+      {
+        src: "../images/memories/20261017-kiko.jpg",
+        caption: "kiko: 👀",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
