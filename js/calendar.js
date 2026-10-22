@@ -39,7 +39,7 @@ const memories = [
     id: "flowers",
     start: "2026-10-15",
     end: "2026-10-15",
-    symbolImage: "../images/memories/20261014.png",
+    symbolImage: "../images/memories/20261015.png",
     title: "special day",
     text: "Happy Birthday to GC",
     photos: [
@@ -68,6 +68,20 @@ const memories = [
       {
         src: "../images/memories/20261017-kiko.jpg",
         caption: "kiko: 👀",
+      },
+    ],
+  },
+  {
+    id: "frinedsday",
+    start: "2026-10-21",
+    end: "2026-10-21",
+    symbolImage: "../images/memories/20261021.png",
+    title: "flu shot day",
+    text: "One less thing on the to-do list!",
+    photos: [
+      {
+        src: "../images/memories/20261021-flushot.jpg",
+        caption: "annual maintenance, human edition",
       },
     ],
   },
