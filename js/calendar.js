@@ -85,6 +85,20 @@ const memories = [
       },
     ],
   },
+  {
+    id: "frappe day",
+    start: "2026-10-25",
+    end: "2026-10-25",
+    symbolImage: "../images/memories/20261025.png",
+    title: "Starbucks day",
+    text: "Have you tried the Starbucks Halloween drink?",
+    photos: [
+      {
+        src: "../images/memories/20261025-frappe.jpg",
+        caption: "Black Cat Frappuccino",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
