@@ -99,6 +99,20 @@ const memories = [
       },
     ],
   },
+  {
+    id: "frappe day",
+    start: "2026-11-03",
+    end: "2026-11-03",
+    symbolImage: "../images/memories/20261103.png",
+    title: "Go vote!",
+    text: "Your vote matters",
+    photos: [
+      {
+        src: "../images/memories/20261103-vote.jpg",
+        caption: "I voted",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
