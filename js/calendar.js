@@ -113,6 +113,42 @@ const memories = [
       },
     ],
   },
+  {
+    id: "skullpanda",
+    start: "2026-11-06",
+    end: "2026-11-06",
+    symbolImage: "../images/memories/20261106.png",
+    title: "The new plush doll pendant",
+    text: "I waited for weeks for this one to be in stock.",
+    photos: [
+      {
+        src: "../images/memories/20261106-spus.jpg",
+        caption: "Skullpanda US exclusive",
+      },
+    ],
+  },
+  {
+    id: "haunted house",
+    start: "2026-11-07",
+    end: "2026-11-07",
+    symbolImage: "../images/memories/20261107.png",
+    title: "Let's fall into fall!",
+    text: "Hangout day with Tracy",
+    photos: [
+      {
+        src: "../images/memories/20261107-fall.jpg",
+        caption: "Step 1: enjoy the fall",
+      },
+      {
+        src: "../images/memories/20261107-cook.jpg",
+        caption: "Step 2: cook together",
+      },
+      {
+        src: "../images/memories/20261107-halloween.jpg",
+        caption: "Step 3: scream night at ESP",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
