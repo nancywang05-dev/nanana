@@ -149,6 +149,20 @@ const memories = [
       },
     ],
   },
+  {
+    id: "haunted house",
+    start: "2026-11-11",
+    end: "2026-11-11",
+    symbolImage: "../images/memories/20261111.png",
+    title: "The crosswalk buttons have left the chat",
+    text: "Not quite sure what happened here...",
+    photos: [
+      {
+        src: "../images/memories/20261111-pole.jpg",
+        caption: "A little urban mystery",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
