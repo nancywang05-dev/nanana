@@ -163,6 +163,20 @@ const memories = [
       },
     ],
   },
+  {
+    id: "haunted house",
+    start: "2026-11-15",
+    end: "2026-11-15",
+    symbolImage: "../images/memories/20261115.png",
+    title: "New plates, new standards",
+    text: "My new fancy plates finally arrived, so naturally, a proper dinner was in order. Had to give them their first outing with a meal worthy of the occasion. Suddenly, even dinner at home feels a little more like fine dining.",
+    photos: [
+      {
+        src: "../images/memories/20261115-fancymeal.jpg",
+        caption: "Dinnerware debut",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
