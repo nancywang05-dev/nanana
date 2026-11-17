@@ -164,7 +164,7 @@ const memories = [
     ],
   },
   {
-    id: "haunted house",
+    id: "fancy dinner",
     start: "2026-11-15",
     end: "2026-11-15",
     symbolImage: "../images/memories/20261115.png",
