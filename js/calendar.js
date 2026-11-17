@@ -177,6 +177,20 @@ const memories = [
       },
     ],
   },
+  {
+    id: "fancy dinner 2",
+    start: "2026-11-16",
+    end: "2026-11-16",
+    symbolImage: "../images/memories/20261116.png",
+    title: "Another homemade meal",
+    text: "Tonight's menu: baked potatoes, chicken skewers, and a little extra effort in the presentation. Who says dinner at home can't be fancy?",
+    photos: [
+      {
+        src: "../images/memories/20261116-potatoskewer.jpg",
+        caption: "The dinner table understood the assignment",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
