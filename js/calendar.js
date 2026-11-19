@@ -191,6 +191,20 @@ const memories = [
       },
     ],
   },
+  {
+    id: "starbucks red cup day",
+    start: "2026-11-17",
+    end: "2026-11-17",
+    symbolImage: "../images/memories/20261117.png",
+    title: "Starbucks Red Cup Day",
+    text: "Have you gotten your red cup for this year?",
+    photos: [
+      {
+        src: "../images/memories/20261117-redcup.jpg",
+        caption: "Love the design",
+      },
+    ],
+  },
 ];
 
 const daysEl = document.getElementById("calendar-days");
